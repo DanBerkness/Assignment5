@@ -22,18 +22,27 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean add(T item) {
-		for (int i = 0; i < arraySize; i++) {
-
-			if (items[i] == null && i == arraySize) {
+		int i = 0;
+		for (Object object : items) {
+			int j = 0;
+			if ( j <= i) {
+				j++;
+			if (items[i] == null ) {
 				items[i] = item;
 				
-				System.out.println(item);
-				if (items[i] == null || i == arraySize) {
-					updatedArraySize = arraySize * 2;
-					Object[] temp = new Object[updatedArraySize];
-					temp = items;
+				
+				if (i == arraySize - 1) {
+					Object[] biggerArray = new Object[arraySize * 2];
+					
+//					for ( object : items) {
+//						items[j] = item;
+//						item = (T) biggerArray[j];
+//						j++;
+//					}
 					return true;
 				}
+			}
+				i++;
 				break;
 			} else
 				continue;
