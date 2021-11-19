@@ -2,57 +2,48 @@ package com.coderscampus.arraylist;
 
 public class CustomArrayList<T> implements CustomList<T> {
 	Object[] items = new Object[10];
-	Object[] resizedArray = new Object[10];
-	int updatedArraySize = 0;
-	int arraySize = items.length;
+	int largerSize = 20;
+	int actualSizeCtr = 0;
 
 	@Override
 	public int getSize() {
-		return arraySize;
+		return items.length;
 	}
 
 	@Override
 	public T get(int index) {
-		T item = null;
-		items[index] = item;
-		System.out.println(items[index]);
-		return item;
+		
+			T item = (T) items[index];
+			
+			return item;
 	}
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public boolean add(T item) {
-		int i = 0;
-		for (Object object : items) {
-			int j = 0;
-			if ( j <= i) {
-				j++;
-			if (items[i] == null ) {
-				items[i] = item;
-				
-				
-				if (i == arraySize - 1) {
-					Object[] biggerArray = new Object[arraySize * 2];
-					
-//					for ( object : items) {
-//						items[j] = item;
-//						item = (T) biggerArray[j];
-//						j++;
-//					}
-					return true;
+		if (actualSizeCtr < items.length) {
+			for (Object object : items) {
+				if (items[actualSizeCtr] == null) {
+					items[actualSizeCtr] = item;
+					break;
 				}
 			}
-				i++;
-				break;
-			} else
-				continue;
-
+		} else if (actualSizeCtr == items.length) {
+			largerSize = items.length * 2;
+			Object[] largerArray = new Object[largerSize];
+			for (int i = 0; i < largerSize; i++) {
+				if (i < items.length) {
+					largerArray[i] = items[i];
+				} else {
+					items = largerArray;
+					break;
+				}
+			}
 		}
 		if (item != null) {
+			actualSizeCtr++;
 			return true;
 		}
-
 		return false;
-
 	}
 }
