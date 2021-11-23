@@ -7,7 +7,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public int getSize() {
-		return items.length;
+		return actualSizeCtr + 1;
 	}
 
 	@Override
@@ -18,17 +18,21 @@ public class CustomArrayList<T> implements CustomList<T> {
 			return item;
 	}
 
-	@SuppressWarnings("unchecked")
+	
 	@Override
 	public boolean add(T item) {
-		if (actualSizeCtr < items.length) {
+		
+		if (actualSizeCtr < items.length -1) {
 			for (Object object : items) {
 				if (items[actualSizeCtr] == null) {
 					items[actualSizeCtr] = item;
 					break;
 				}
 			}
-		} else if (actualSizeCtr == items.length) {
+		} else if (actualSizeCtr == items.length -1) {
+			if (items[actualSizeCtr] == null) {
+				items[actualSizeCtr] = item;
+			}
 			largerSize = items.length * 2;
 			Object[] largerArray = new Object[largerSize];
 			for (int i = 0; i < largerSize; i++) {
