@@ -9,7 +9,7 @@ public class CustomListApplication {
 		
 		
 		myCustomList.add("for");
-		myCustomList.add("get");
+		myCustomList.add("true");
 		myCustomList.add("it");
 		myCustomList.add("is");
 		myCustomList.add("for");
@@ -32,7 +32,7 @@ public class CustomListApplication {
 		myCustomList.add("it");
 		myCustomList.add("it");
 		myCustomList.add("Added item");
-		myCustomList.get(1);
+		
 				
 		System.out.println("The new array size is " + myCustomList.getSize());
 		System.out.println("---------------------");

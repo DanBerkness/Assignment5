@@ -7,7 +7,7 @@ public class CustomArrayList<T> implements CustomList<T> {
 
 	@Override
 	public int getSize() {
-		return actualSizeCtr + 1;
+		return actualSizeCtr;
 	}
 
 	@Override
